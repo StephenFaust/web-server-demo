@@ -2,20 +2,20 @@ use std::{
     fs,
     io::{Read, Write},
     net::{TcpListener, TcpStream},
-    thread,
+    thread, 
 };
 
 use thread_pool::ThreadPool;
 
 fn main() {
     let mut thread_pool = ThreadPool::new(10);
-
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
-
     for stream in listener.incoming() {
         let stream = stream.unwrap();
-        thread_pool.execute(|| handle_connection(stream)).unwrap();
+        thread_pool.execute(move || handle_connection(stream)).unwrap();
     }
+
+
 
     fn handle_connection(mut stream: TcpStream) {
         let mut buffer = [0; 1024];

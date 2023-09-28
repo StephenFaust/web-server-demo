@@ -2,5 +2,6 @@
 
 members = [
     "web-server-main",
-    "thread-pool"
+    "thread-pool",
+    "network"
 ]
