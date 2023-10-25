@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 thread-pool = { path = "../thread-pool" }
+network = { path="../network"}
