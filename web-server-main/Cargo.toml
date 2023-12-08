@@ -7,4 +7,6 @@ edition = "2021"
 
 [dependencies]
 thread-pool = { path = "../thread-pool" }
-network = { path="../network"}
+network = { path = "../network" }
+macro-demo = { path = "../macro-demo" }
+tokio.workspace = true

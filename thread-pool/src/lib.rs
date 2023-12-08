@@ -1,3 +1,6 @@
+mod demo;
+pub mod linked_list;
+
 use std::{
     sync::{
         atomic::{AtomicUsize, Ordering},
@@ -47,14 +50,10 @@ fn start_thread(common_data: Arc<CommonData>) {
                     task();
                     common_data.queue_count.fetch_sub(1, Ordering::SeqCst)
                 }
-                Err(e) => {
-                    match e {
-                        TryRecvError::Empty=> continue,
-                        TryRecvError::Disconnected=> panic!("error")
-                        
-                    }
-                   
-                }
+                Err(e) => match e {
+                    TryRecvError::Empty => continue,
+                    TryRecvError::Disconnected => panic!("error"),
+                },
             };
         })
         .unwrap();

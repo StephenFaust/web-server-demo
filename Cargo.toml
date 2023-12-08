@@ -1,7 +1,9 @@
 [workspace]
 
-members = [
-    "web-server-main",
-    "thread-pool",
-    "network"
-]
+members = ["web-server-main", "thread-pool", "network", "macro-demo"]
+
+resolver = "2"
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+num_cpus = "1.13"
